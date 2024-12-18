@@ -16,12 +16,10 @@ const globalErrorHandler: ErrorRequestHandler = (err, req,res, next,
 ) => {
   let statusCode = 500;
   let message = 'Something went wrong!';
-
-  // eslint-disable-next-line prefer-const
   let errorSource: TErrorSource = [
     {
       path: '',
-      message: 'Something fucking wrong!',
+      message: 'Something was wrong!',
     }
   ];
 
