@@ -11,14 +11,16 @@ Welcome to the Blogging Site project! This README file will guide you through th
 
 ## Introduction
 
-This project is a simple blogging site where users can create, edit, and delete blog posts. It is built using modern web technologies.
+This project is a simple blogging site where users can create, update, and delete blog posts. It is built using modern web technologies.I tried my best.Thank you `````Programming Hero`````
 
 ## Features
 
 - User authentication
-- Create, edit, and delete blog posts
-- Comment on posts
-- Responsive design
+- Create, update, and delete blog posts
+- admin and user role
+- Block users from admin
+- Delete any blog post from admin
+- Error handling
 
 ## Installation
 
@@ -26,7 +28,7 @@ To get started with the project, follow these steps:
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/blogging-site.git
+   git clone https://github.com/Junaeid11/L2-assignment-3.git
    ```
 2. Navigate to the project directory:
    ```sh
@@ -47,7 +49,7 @@ npm start
 
 Open your browser and navigate to `http://localhost:3333` to see the application in action.
 
-## Endpoints
+## API Endpoints
 
 ### Authentication
 
@@ -268,5 +270,10 @@ blogging-site
 └── vercel.json
 ```
 
+
 This structure includes the main directories and files you will work with:
+
+
+## Project Author
+Junaeid Ahmed Tanim
 
