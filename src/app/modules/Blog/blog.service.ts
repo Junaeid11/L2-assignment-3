@@ -15,6 +15,7 @@ const updateBlogFromDb = async (id: string, payload: TBlog) => {
     return result
 }
 const deleteBlogFromDb = async (id: string) => {
+    
     const result = await BlogModel.findByIdAndDelete(id)
     return result
 }

@@ -4,7 +4,7 @@ import sendResponse from "../../utils/sendResponse";
 import { blogService } from "./blog.service";
 
 const createBlog = catchAsync(async (req, res)=>{
-    const authorData = req.email; 
+    const authorData = req.user;
     const blogData = {
         ...req.body,
         author: {

@@ -18,11 +18,10 @@ const loginUser = async (payload: TLoginUser) => {
         throw new APPerror(httpStatus.FORBIDDEN, 'Password is not matched')
     }
      const JwtPayload = {
-        id: user.id,
         email: user.email,
         role: user.role as string
     }
-    const token = createToken(JwtPayload, config.jwt_access_secret as string)
+    const token = createToken( JwtPayload, config.jwt_access_secret as string,config.jwt_expire_access as string)
     return{
          token
     }
