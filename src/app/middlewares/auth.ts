@@ -1,54 +1,48 @@
-// import { NextFunction, Request, Response } from "express";
-
-// import catchAsync from "../utils/catchAsync";
-// import { APPerror } from "../errors/AppError";
-// import httpStatus from "http-status";
-// import jwt, { JwtPayload } from 'jsonwebtoken';
-// import config from "../config";
-// import { TUserRole } from "../modules/User/user.interface";
-// import { User } from "../modules/User/user.model";
+import config from "../config"
+import { APPerror } from "../errors/AppError"
+import { TRole } from "../modules/User/user.interface"
+import catchAsync from "../utils/catchAsync"
+import httpStatus from "http-status"
+import  Jwt, { JwtPayload }  from "jsonwebtoken"
 
 
-// const auth = (...requiredRoles : TUserRole[]) => {
-//     return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-//         //if token sent
-//         const token = req.headers.authorization;
-//         if (!token) {
-//             throw new APPerror(httpStatus.UNAUTHORIZED, 'You are not authorized ')
-//         }
-//         const decoded = jwt.verify(token, config.jwt_access_secret as string) as JwtPayload;
-//       const {role, userId, iat} = decoded;
-//         const user = await User.isUserExistByCustomId(userId)
-//     if (!user) {
-//         throw new APPerror(httpStatus.NOT_FOUND, 'User not found')
-//     }
-//     //user is already deleted
-//     const isDeleted = user.isDeleted
-//     if (isDeleted) {
-//         throw new APPerror(httpStatus.NOT_FOUND, 'This user is already deleted')
-//     }
-//     // //if the user is blocked
-//     const userStatus = user.status
-//     if (userStatus === 'blocked') {
-//         throw new APPerror(httpStatus.NOT_FOUND, 'This user is blocked')
-//     }
-//     if(user.passwordChangedAt && User.isJWTIssuedBeforeChangePassword(user.passwordChangedAt, iat as number))
-//     {
-//        throw new APPerror(httpStatus.UNAUTHORIZED, 'You are not authorized ') 
-//     }
+const auth= (...requiredUserRoles: TRole[])=>{
+    return catchAsync(async(req,res,next) =>{
+        const token = req.headers.authorization
+
+        if(!token){
+            throw new APPerror(httpStatus.UNAUTHORIZED, 'You are not authorized')
+        }
+        Jwt.verify(token,config.jwt_access_secret as string,function(err,decoded){
+            if(err){
+                throw new APPerror(httpStatus.UNAUTHORIZED,'You are not Authorized')
+            }
+            const role = (decoded as JwtPayload).role
+            if(requiredUserRoles && !requiredUserRoles.includes(role)){
+                throw new APPerror(httpStatus.UNAUTHORIZED,'You are not Authorized')
+
+
+            }
+            const {id:_id} = (decoded as JwtPayload)
+            
+            if(req.params.id && _id !== req.params.id){
+                console.log(`User ID: ${_id}, Requested ID: ${req.params.id}`);
+
+                throw new APPerror(httpStatus.UNAUTHORIZED,'You are not authorized')
+            }
+           
+           
+             
+            
+            
+
+           req.email = decoded as JwtPayload
+           next()
+        })
+
+
         
-//         {
 
-//             // decoded undefined
-//             if(requiredRoles && !requiredRoles.includes(role)){
-//                 throw new APPerror(httpStatus.UNAUTHORIZED, 'You are not ADMIN ')
-
-//             }
-//             req.user = decoded as JwtPayload
-//             next()
-   
-//         }
-//     })
-
-// }
-// export default auth;
+    })
+}
+export default auth

@@ -1,9 +1,17 @@
+
 import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 import { blogService } from "./blog.service";
 
 const createBlog = catchAsync(async (req, res)=>{
-    const result = await blogService.createBlogIntoDb(req.body);
+    const authorData = req.email; 
+    const blogData = {
+        ...req.body,
+        author: {
+            _id: authorData.id,
+        },
+    };
+    const result = await blogService.createBlogIntoDb(blogData)
     sendResponse(res,{
         statusCode:201,
         success: true,
@@ -23,22 +31,24 @@ const updateBlog = catchAsync(async (req, res)=>{
 })
 const deleteBlog = catchAsync(async (req, res)=>{
     const {id} = req.params
-    const result = await blogService.deleteBlogFromDb(id);
+    await blogService.deleteBlogFromDb(id);
     sendResponse(res,{
         statusCode:200,
         success: true,
         message:"Blog deleted Successfully",
-        data:result
+        data:{}
         
     })
 })
 const getAllBlogs = catchAsync(async (req, res)=>{
-    const result = await blogService.getAllBlogsFromDb();
+  
+    const result = await blogService.getAllBlogsFromDb(req.query);
     sendResponse(res,{
         statusCode:200,
         success: true,
         message:"Blogs fetched successfully",
         data: result
+        
     })
 })
 

@@ -15,7 +15,6 @@ const blogSchema = new Schema<TBlog>({
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
-        required:true
     },
     isPublished: {
         type: Boolean,
@@ -26,6 +25,7 @@ const blogSchema = new Schema<TBlog>({
 }, {
     timestamps: true
 })
+
 
 blogSchema.set('toJSON', {
     transform:(doc,value)=>{
