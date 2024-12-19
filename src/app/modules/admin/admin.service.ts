@@ -7,7 +7,6 @@ const deleteBlogFromDb = async (id: string) => {
 }
 const blockUserFromDb = async (id:string)=>{
     const data = await User.findByIdAndUpdate(id,{isBlocked:true},{new:true})
-
     if( data?.isBlocked){
         
     return true
