@@ -1,7 +1,7 @@
-/* eslint-disable no-undef */
+ 
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 import { ZodError, ZodIssue } from 'zod';
 import { TErrorSource } from '../../interface/Error';
