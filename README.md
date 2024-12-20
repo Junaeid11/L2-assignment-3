@@ -57,21 +57,6 @@ Open your browser and navigate to `http://localhost:3333` to see the application
   - **URL:** `/api/auth/login`
   - **Method:** `POST`
   - **Description:** Authenticates a user and returns a JWT token.
-  - **Request Body:**
-    ```json
-    {
-      "email": "user@example.com",
-      "password": "password123"
-    }
-    ```
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Login successful",
-      "token": "JWT token"
-    }
-    ```
 
 ### Blogs
 
@@ -83,31 +68,7 @@ Open your browser and navigate to `http://localhost:3333` to see the application
     ```
     Authorization: Bearer <token>
     ```
-  - **Request Body:**
-    ```json
-    {
-      "title": "My First Blog",
-      "content": "This is the content of my blog."
-    }
-    ```
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Blog created successfully",
-      "statusCode": 201,
-      "data": {
-        "_id": "string",
-        "title": "string",
-        "content": "string",
-        "author": {
-          "_id": "string",
-          "email": "string",
-          "role": "string"
-        }
-      }
-    }
-    ```
+
 
 - **Update Blog**
   - **URL:** `/api/blogs/:id`
@@ -116,31 +77,6 @@ Open your browser and navigate to `http://localhost:3333` to see the application
   - **Request Header:**
     ```
     Authorization: Bearer <token>
-    ```
-  - **Request Body:**
-    ```json
-    {
-      "title": "Updated Blog Title",
-      "content": "Updated blog content."
-    }
-    ```
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Blog updated successfully",
-      "statusCode": 200,
-      "data": {
-        "_id": "string",
-        "title": "string",
-        "content": "string",
-        "author": {
-          "_id": "string",
-          "email": "string",
-          "role": "string"
-        }
-      }
-    }
     ```
 
 - **Delete Blog**
@@ -151,14 +87,7 @@ Open your browser and navigate to `http://localhost:3333` to see the application
     ```
     Authorization: Bearer <token>
     ```
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Blog deleted successfully",
-      "statusCode": 200
-    }
-    ```
+
 
     
 ### Admin Actions
@@ -171,14 +100,6 @@ Open your browser and navigate to `http://localhost:3333` to see the application
     ```
     Authorization: Bearer <admin_token>
     ```
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "User blocked successfully",
-      "statusCode": 200
-    }
-    ```
 
 - **Delete Blog**
   - **URL:** `/api/admin/blogs/:id`
@@ -187,14 +108,6 @@ Open your browser and navigate to `http://localhost:3333` to see the application
   - **Request Header:**
     ```
     Authorization: Bearer <admin_token>
-    ```
-  - **Response:**
-    ```json
-    {
-      "success": true,
-      "message": "Blog deleted successfully",
-      "statusCode": 200
-    }
     ```
 
 ## Project Structure
