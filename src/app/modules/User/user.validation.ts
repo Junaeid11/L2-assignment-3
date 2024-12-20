@@ -10,8 +10,8 @@ const userValidationSchema = z.object({
     })
 
 })
-const updateValidationSchema=z.object({
-    body:z.object({
+const updateValidationSchema = z.object({
+    body: z.object({
         name: z.string({ required_error: "Name is Required" }).min(2).max(50).optional(),
         email: z.string({ required_error: "Email is Required" }).email().optional(),
         password: z.string().min(6).optional(),

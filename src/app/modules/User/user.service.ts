@@ -1,6 +1,6 @@
 import { User } from "./User.model";
 
-const createUserIntoDb = async (data: string)=>{
+const createUserIntoDb = async (data: string) => {
     const result = await User.create(data);
     return result;
 }
@@ -8,5 +8,5 @@ const createUserIntoDb = async (data: string)=>{
 
 export const userService = {
     createUserIntoDb,
-  
+
 }

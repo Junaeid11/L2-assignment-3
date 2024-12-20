@@ -5,6 +5,6 @@ import { UserValidation } from "./user.validation";
 
 const userRouter = Router();
 
-userRouter.post('/register',validateRequest(UserValidation.userValidationSchema), UserController.createUser)
+userRouter.post('/register', validateRequest(UserValidation.userValidationSchema), UserController.createUser)
 
 export default userRouter;

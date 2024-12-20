@@ -29,6 +29,7 @@ const deleteBlogFromDb = async (id: string,userId: string) => {
     if (!blog) {
         throw new APPerror(httpStatus.NOT_FOUND, "Blog not found");
     }
+    //author id match na hole
     if (blog.author._id.toString() !== userId) { 
         throw new APPerror(httpStatus.FORBIDDEN, "You are not authorized to delete");
     }
