@@ -1,6 +1,6 @@
 # Blogging Site
 
-Welcome to the Blogging Site project! This README file will guide you through the setup and usage of the project.
+Welcome to the Blogging Site project! This is a full- backend project built using  Express, and MongoDB. The project includes user authentication, blog creation, update, and deletion, and admin actions such as blocking users and deleting blog posts.
 
 ## Table of Contents
 
